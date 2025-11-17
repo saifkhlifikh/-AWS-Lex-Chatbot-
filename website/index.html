@@ -139,15 +139,5 @@
     </div>
   </div>
 
-  <script>
-// PawlPal Chatbot & Language Switcher Script
-const LANGS=['en','fr','ar'];
-const I18N={en:{chatbot_tooltip:"Need a sitter? Ask PawlPal!",hero:{title:"Your Pet's Best Friend",subtitle:"Find trusted pet sitters, book instantly, and stay connected with 24/7 support",cta:"Try PawlPal Chat"},features:{title:"What We Offer",find_sitter:{title:"Find Sitter",desc:"Browse verified pet sitters in your area with detailed profiles and reviews"},book:{title:"Book Instantly",desc:"Quick and easy booking with instant confirmation and secure payments"},vet:{title:"Vet Partners",desc:"Access to trusted veterinary partners for your pet's health needs"},vaccine:{title:"Vaccine Reminders",desc:"Never miss important vaccinations with automatic reminders"},emergency:{title:"Emergency Help",desc:"24/7 emergency support and quick access to emergency vets"},updates:{title:"Real-time Updates",desc:"Get photos and updates about your pet throughout the day"}},how_it_works:{title:"How It Works",step1:{title:"Create Profile",desc:"Tell us about your pet and their needs"},step2:{title:"Find & Book",desc:"Browse sitters and book the perfect match"},step3:{title:"Stay Connected",desc:"Receive updates and photos of your happy pet"}},testimonials:{title:"What Pet Parents Say",quote1:'"PawlPal gave me peace of mind while traveling. The sitter sent daily photos and my dog was so happy!"'},footer:{privacy:"🔒 Conversations encrypted. We never share pet health data."}},fr:{chatbot_tooltip:"Besoin d’un gardien ? Demandez PawlPal !"},ar:{chatbot_tooltip:"تحتاج راعي للحيوان؟ اسأل PawlPal!"}};
-function detectLanguage(){const lang=(navigator.language||"en").substr(0,2).toLowerCase();return LANGS.includes(lang)?lang:'en';}
-let currentLang=detectLanguage();
-function updateLangUI(lang){currentLang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{let keys=el.getAttribute('data-i18n').split('.');let txt=I18N[lang];keys.forEach(k=>{txt=txt&&txt[k];});if(txt)el.textContent=txt;});document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.getAttribute('data-lang')===lang);btn.setAttribute('aria-pressed',btn.getAttribute('data-lang')===lang?'true':'false');});let privacy=document.querySelector('.privacy-text');if(privacy&&I18N[lang].footer)privacy.textContent=I18N[lang].footer.privacy;document.querySelectorAll('.chatbot-tooltip').forEach(t=>t.textContent=I18N[lang].chatbot_tooltip);}
-document.addEventListener('DOMContentLoaded',()=>{updateLangUI(currentLang);});
-window.openChatWidget=function(){alert(I18N[currentLang].chatbot_tooltip+' [Chatbot modal would open here]');};
-  </script>
 </body>
 </html>
