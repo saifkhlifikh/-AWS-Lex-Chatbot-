@@ -1,0 +1,119 @@
+.app {
+    font-family: 'Inter', sans-serif;
+    color: #2B2B2B;
+}
+
+body {
+    background-color: #FBFBFB;
+    margin: 0;
+    padding: 0;
+}
+
+/* Brand Colors */
+:root {
+    --teal: #2AA6A6;
+    --coral: #FF7A66;
+    --off-white: #FBFBFB;
+    --dark: #2B2B2B;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--teal);
+    padding: 1rem;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--coral);
+}
+
+/* Hero Section Styles */
+.hero {
+    background: linear-gradient(to right, var(--teal), var(--coral));
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* Feature Cards */
+.card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(32,32,32,0.08);
+    padding: 20px;
+    margin: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Floating Chatbot Button */
+.floating-chatbot {
+    width: 64px;
+    height: 64px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Smooth Animations */
+.animated {
+    transition: all 0.18s ease;
+}
+
+/* Glass Morphism Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+/* Media Queries for Mobile Breakpoints */
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px 10px;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+}
+
+/* Accessibility Style */
+.high-contrast {
+    background-color: var(--dark);
+    color: white;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--teal);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Testimonial Cards */
+.testimonial {
+    padding: 20px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(32,32,32,0.08);
+    margin: 20px;
+}
+
+/* Additional component styles below */
