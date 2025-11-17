@@ -1,1 +1,0 @@
-Complete JavaScript for PawlPal chatbot widget with AWS Lex integration, multilingual support (EN/FR/AR), chat UI management, message rendering, sitter card display, quick action buttons, language detection, API calls, attachment handling, typing indicators, smooth animations, keyboard navigation, accessibility features
