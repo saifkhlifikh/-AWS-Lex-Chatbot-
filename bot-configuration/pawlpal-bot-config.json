@@ -1,4 +1,23 @@
-Co   "intentName": "FindPetSitter",
+{
+  "botName": "PawlPal",
+  "description": "Multilingual chatbot for pet-sitting mobile app",
+  "locales": [
+    {
+      "localeId": "en_US",
+      "nluConfidenceThreshold": 0.40
+    },
+    {
+      "localeId": "fr_FR",
+      "nluConfidenceThreshold": 0.40
+    },
+    {
+      "localeId": "ar_TN",
+      "nluConfidenceThreshold": 0.40
+    }
+  ],
+  "intents": [
+    {
+      "intentName": "FindPetSitter",
       "description": "Search for available pet sitters",
       "sampleUtterances": "See sub-issues for complete list",
       "slots": [
