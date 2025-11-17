@@ -1,0 +1,1 @@
+Complete chatbot widget JavaScript with Lex integration, multilingual support, chat UI, sitter cards, and all flows
