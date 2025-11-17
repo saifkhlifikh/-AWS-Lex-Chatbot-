@@ -1,1 +1,0 @@
-Complete integration guide for AWS Lex V2, Lambda function structure, sample payloads and responses, authentication with Cognito, S3 upload for attachments, analytics events, embedding instructions, API documentation
