@@ -1,1 +1,107 @@
-Landing page with hero section, chatbot widget demo, features list, and footer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PawlPal - Your Pet's Best Friend">
+    <meta property="og:title" content="PawlPal - Your Pet's Best Friend">
+    <meta property="og:description" content="24/7 pet sitting, walking, and vet support at your fingertips">
+    <title>PawlPal Chatbot Widget</title>
+    <link rel="stylesheet" href="widget.css">
+    <script src="widget.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FBFBFB;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            background-color: #2AA6A6;
+            color: white;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        .cta {
+            background-color: #FF7A66;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #EEE;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="pawlpal-logo.png" alt="PawlPal Logo" />
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#demo">Demo</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Meet PawlPal - Your Pet's Best Friend</h1>
+        <h2>24/7 pet sitting, walking, and vet support at your fingertips</h2>
+        <button class="cta" onclick="openChatWidget()">Try PawlPal Chat</button>
+    </section>
+    <section id="features">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">Find Sitter</div>
+            <div class="feature">Book Instantly</div>
+            <div class="feature">Vet Partners</div>
+            <div class="feature">Vaccine Reminders</div>
+            <div class="feature">Emergency Help</div>
+            <div class="feature">Real-time Updates</div>
+        </div>
+    </section>
+    <section id="demo">
+        <h2>Chatbot Widget Preview</h2>
+        <div class="widget-preview">
+            <iframe src="chatbot-preview.html" title="Chatbot Widget Preview"></iframe>
+        </div>
+    </section>
+    <footer>
+        <p>Conversations encrypted. We never share pet health data.</p>
+        <div>
+            <button onclick="setLanguage('EN')">EN</button>
+            <button onclick="setLanguage('FR')">FR</button>
+            <button onclick="setLanguage('AR')">AR</button>
+        </div>
+    </footer>
+</body>
+</html>
