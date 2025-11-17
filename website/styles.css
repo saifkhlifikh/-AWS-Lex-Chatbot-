@@ -5,137 +5,156 @@
   --dark: #2B2B2B;
   --sand: #FFF2E6;
   --radius: 18px;
-  --shadow: 0 6px 18px rgba(32,32,32,0.09);
+  --shadow: 0 6px 32px rgba(32,32,32,0.12);
   --anim-bounce: cubic-bezier(.5,1.7,.36,.93);
-  --anim-speed: 0.18s;
-}
-body {
-  margin: 0; background: var(--off-white);
-  font-family: 'Inter', Arial, sans-serif;
+  --anim-speed: 0.22s;
 }
 .wrapper {
   min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg,var(--teal),var(--coral) 85%);
-  animation: fadeInUp var(--anim-speed) var(--anim-bounce);
 }
 .chatbot-box {
   background: #fff;
-  width: 100%; max-width: 390px; min-height: 510px;
+  width: 100%; max-width: 400px; min-height: 520px;
   border-radius: var(--radius); box-shadow: var(--shadow);
   display: flex; flex-direction: column;
-  animation: bounceIn var(--anim-speed) var(--anim-bounce);
+  animation: bounceIn 0.85s var(--anim-bounce);
 }
 .bot-header {
-  background: rgba(42,166,166,.73);
+  background: rgba(42,166,166,.69);
+  backdrop-filter: blur(11px);
   border-radius: var(--radius) var(--radius) 0 0;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem 1.2rem; color: #fff;
+  padding: 1rem 1.2rem; color: #fff;
   font-family: 'Poppins', Arial, sans-serif;
-  box-shadow: 0 2px 12px rgba(32,32,32,0.05);
+  box-shadow: 0 2px 13px rgba(32,32,32,0.10);
   position: relative;
-  animation: fadeInUp var(--anim-speed) var(--anim-bounce);
+  animation: fadeInUp 1.2s var(--anim-bounce);
 }
-.bot-header .logo {
-  font-weight: 600; font-size: 1.3rem; display: flex; align-items: center; gap: 6px;
-}
+.bot-header .logo svg { vertical-align:middle; }
 .bot-header .status-dot {
   margin-left: 8px; width: 13px; height: 13px;
   background: #6BBF59;
   border-radius: 50%; display: inline-block;
-  box-shadow: 0 1px 2px rgba(32,32,32,.13);
+  box-shadow: 0 1px 2px rgba(32,32,32,.17);
   border: 2px solid #fff;
-  animation: pulseDot 1.3s infinite;
+  animation: pulseDot 1.2s infinite;
 }
-@keyframes pulseDot { 0%,100%{box-shadow:0 0 4px #6BBF59;} 50%{box-shadow:0 0 12px #6BBF59;} }
-
+@keyframes pulseDot { 0%,100%{box-shadow:0 0 4px #6BBF59;} 50%{box-shadow:0 0 17px #6BBF59;} }
 .lang-switcher {
   background: #fff; color: var(--teal); font-size: 1rem; font-weight: 600;
-  border: none; border-radius: 9px; padding: 0.35em 0.75em; outline: none;
+  border: none; border-radius: 9px; padding: 0.35em 0.9em; outline: none;
   margin-left: 5px; cursor: pointer;
   transition: background var(--anim-speed);
+  box-shadow: 0 2px 8px rgba(42,166,166,0.07);
 }
 .lang-switcher:focus { background:var(--sand); }
 
 .chatbot-main {
-  flex: 1; padding: 1.1em 1.15em .5em 1.15em;
+  flex: 1; padding: 1em 1.15em .5em 1.15em;
   overflow-y: auto; display: flex; flex-direction: column; gap: .7em;
-  background: var(--off-white); font-size: 1.05rem;
+  background: var(--off-white); font-size: 1.07rem;
+  scroll-behavior: smooth;
 }
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-thumb { background:var(--teal);border-radius:5px;}
+
 .bot-msg, .user-msg {
   max-width: 80%; border-radius: 13px;
-  margin-bottom: 8px; padding: 0.75em 1em;
-  position: relative; word-break: break-word;
+  margin-bottom: 8px; padding: 0.80em 1em;
+  word-break: break-word;
   animation: fadeInUp var(--anim-speed) var(--anim-bounce);
-  transition: transform var(--anim-speed);
+  transition: transform .21s var(--anim-bounce);
+  box-shadow: 0 2px 14px rgba(32,32,32,.09);
+  position:relative;
 }
 .bot-msg {
   background: #F5FFFF; color: var(--dark); align-self: flex-start;
-  box-shadow: 0 2px 14px rgba(42,166,166,.11);
+  border-bottom-left-radius: 5px;
+}
+.bot-msg:before {
+  content:""; display:block; position:absolute; left:-26px; top:35px;
+  width:18px;height:18px; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%232AA6A6" viewBox="0 0 18 18"><ellipse cx="9" cy="9" rx="8" ry="7"/></svg>')no-repeat center/contain;
+  opacity:.13;
 }
 .user-msg {
   background: var(--coral); color: #fff; align-self: flex-end;
-  box-shadow: 0 2px 11px rgba(255,122,102,.12);
+  border-bottom-right-radius:5px;
   animation: bounceBubble var(--anim-speed) var(--anim-bounce);
 }
+.user-msg:after {
+  content:""; display:block; position:absolute; right:-18px; top:22px;
+  width:13px;height:13px; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23FF7A66" viewBox="0 0 18 18"><ellipse cx="9" cy="9" rx="7" ry="6"/></svg>')no-repeat center/contain;
+  opacity:0.18;
+}
 .typing-indicator {
-  align-self: flex-start; margin-top: 2px; margin-bottom: 8px;
-  display: inline-block;
+  align-self: flex-start; margin-top: 2px; margin-bottom: 8px; display:inline-block;
 }
 .typing-dot {
   display: inline-block; width: 8px; height: 8px; margin: 0 2px;
   border-radius: 50%; background: #2AA6A6; opacity: 0.35;
-  animation: dotBounce 1.16s infinite;
+  animation: dotBounce 1.05s infinite;
 }
-.typing-dot:nth-child(2) { animation-delay:.19s; }
-.typing-dot:nth-child(3) { animation-delay:.37s; }
-@keyframes dotBounce { 0%,80%,100% { transform: translateY(0);} 30% { transform: translateY(-6px);} }
+.typing-dot:nth-child(2) { animation-delay:.17s; }
+.typing-dot:nth-child(3) { animation-delay:.31s; }
+@keyframes dotBounce { 0%,80%,100% { transform: translateY(0);} 30% { transform: translateY(-7px);} }
 
 .composer {
   background: rgba(251,251,251,.97); border-radius: 0 0 var(--radius) var(--radius);
-  padding: .95em 1em; box-shadow: 0 -2px 6px rgba(32,32,32,0.04);
-  display: flex; gap: .75em;
+  padding: .97em 1em; box-shadow: 0 -2px 6px rgba(32,32,32,0.05);
+  display: flex; gap: .80em;
 }
 .composer input {
-  flex: 1; border: none; padding: .65em .5em;
+  flex: 1; border: none; padding: .70em .6em;
   border-radius: 8px; background: #f0f6f7;
   font-size: 1em; outline: none; font-family: 'Inter',Arial;
-  transition: box-shadow var(--anim-speed);
+  transition: box-shadow .21s,var(--anim-bounce);
 }
-.composer input:focus { box-shadow: 0 2px 8px rgba(42,166,166,0.16);background:#e8f3f5;}
+.composer input:focus {
+  box-shadow: 0 2px 8px rgba(42,166,166,0.23);background:#e8f3f5;
+}
 .composer button {
-  background: var(--teal); color: #fff;
-  border: none; border-radius: 9px; padding: .48em 1.3em;
+  background: var(--teal); color: #fff; border: none;
+  border-radius: 9px; padding: .49em 1.3em;
   font-weight: 600; cursor: pointer; font-size: 1.08em;
-  transition: background var(--anim-speed) var(--anim-bounce);
+  transition: background var(--anim-speed);
+  box-shadow: 0 1px 8px 0 rgba(32,32,32,.15);
+  outline: none; position:relative;
   animation: btnBounce var(--anim-speed) var(--anim-bounce);
 }
+.composer button svg { vertical-align: middle; }
 .composer button:hover {
-  background: #1FA2A2; transform: scale(1.06);
+  background: #FF7A66; transform: scale(1.11);
+  box-shadow: 0 2px 18px #FF7A66;
 }
-
 .quick-replies {
-  display: flex; flex-wrap: wrap; gap: 0.6em; margin: 0.6em 0 0.2em 0;
-  animation: fadeInUp var(--anim-speed) var(--anim-bounce);
+  display: flex; flex-wrap: wrap; gap: 0.65em; margin: 0.6em 0 0.15em 0;
+  animation: fadeInUp .25s var(--anim-bounce);
 }
 .quick-btn {
   background: var(--coral); color: #fff;
-  border: none; border-radius: 8px; padding: .44em 1.05em;
+  border: none; border-radius: 8px; padding: .44em 1.1em;
   font-size: 1em; font-weight: 500; cursor: pointer; margin-bottom: 3px;
   animation: btnBounce var(--anim-speed) var(--anim-bounce);
-  transition: background var(--anim-speed);
+  box-shadow: 0 1px 8px 0 rgba(32,32,32,.09);
+  transition: background .18s,var(--anim-bounce);
+  outline:none;
+  position:relative;
 }
-.quick-btn:hover { background: #2AA6A6; }
+.quick-btn:hover { background: #2AA6A6; transform: scale(1.11); }
+.quick-btn:focus { background:#6BBF59; color:var(--dark); }
+footer { color:#fff;font-size:.91em;text-align:center;padding:1.25em;}
 
-footer { color:#fff;font-size:.86em;text-align:center;padding:1.2em;}
 @media(max-width:600px){
   .chatbot-box { max-width: 99vw; min-height: 90vh;}
   .bot-header { font-size: 1rem;}
   .composer button { padding:.41em .9em;}
   .feature-card h3, .user-msg, .bot-msg { font-size: 0.98rem;}
 }
-/* Animations */
-@keyframes fadeInUp { from { opacity: 0;transform:translateY(14px);} to { opacity: 1;transform:translateY(0);}}
-@keyframes bounceIn { 0%{transform:scale(0.92);}50%{transform:scale(1.06);}100%{transform:scale(1);}}
-@keyframes bounceBubble { 0%{transform:scale(.93);}52%{transform:scale(1.11);}100%{transform:scale(1);}}
-@keyframes btnBounce { 0%{transform:scale(1);}40%{transform:scale(1.12);}100%{transform:scale(1);}}
+@keyframes fadeInUp { from { opacity: 0;transform:translateY(18px);} to { opacity: 1;transform:translateY(0);}}
+@keyframes bounceIn { 0%{transform:scale(0.93);}50%{transform:scale(1.09);}100%{transform:scale(1);}}
+@keyframes bounceBubble { 0%{transform:scale(.93);}52%{transform:scale(1.13);}100%{transform:scale(1);}
+}
+@keyframes btnBounce {
+  0%{transform:scale(1);}40%{transform:scale(1.13);}100%{transform:scale(1);}
+}
