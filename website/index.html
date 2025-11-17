@@ -11,67 +11,139 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2aa6a6, #1f7f7f);
+      background: #1f7f7f;
+      overflow: hidden;
       color: #fff;
-      overflow-x: hidden;
     }
-    /* Floating Paw Logo Animation */
+
+    /* Animated Pet Background */
+    .pet-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://i.ibb.co/QCk3mfs/petpattern.png');
+      background-size: 260px;
+      opacity: 0.12;
+      animation: bgMove 25s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes bgMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 800px 800px; }
+    }
+
+    /* Floating Paw Logo */
     .logo {
-      position: relative;
       width: 160px;
       margin: 40px auto 0 auto;
       animation: float 3s ease-in-out infinite;
     }
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-14px); }
       100% { transform: translateY(0); }
     }
-    /* Animated Gradient Paw */
+
     .logo svg {
       width: 100%;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25));
     }
-    /* Chat Container */
+
+    /* Conversation Box */
     .chat-container {
       width: 90%;
-      max-width: 700px;
-      background: #ffffff;
+      max-width: 750px;
+      background: rgba(255,255,255,0.65);
       margin: 40px auto;
-      border-radius: 16px;
-      padding: 30px;
+      border-radius: 22px;
+      padding: 35px 30px;
       color: #222;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+      backdrop-filter: blur(15px) saturate(180%);
+      border: 2px solid rgba(255,255,255,0.4);
       animation: fadeIn 1s ease forwards;
+      display: flex;
+      flex-direction: column;
+      height: 500px;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     h1 {
       text-align: center;
       font-weight: 600;
       color: #2aa6a6;
       margin-top: 0;
+      margin-bottom: 20px;
     }
-    .message-box {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 14px;
-      background: #f2fefe;
-      border-left: 5px solid #2aa6a6;
-      animation: slideIn 0.6s ease;
+
+    /* Scrollable Chat */
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 10px;
     }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
+
+    /* Message Bubbles */
+    .msg {
+      max-width: 75%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      position: relative;
+      animation: pop .25s ease;
     }
-    /* Input */
+
+    @keyframes pop {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .bot {
+      background: #e8fdfd;
+      border-bottom-left-radius: 5px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    }
+    .bot::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 20px;
+      width: 16px; height: 16px;
+      background: #e8fdfd;
+      border-radius: 4px;
+      transform: rotate(45deg);
+    }
+
+    .user {
+      background: #2aa6a6;
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    }
+    .user::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 20px;
+      width: 16px; height: 16px;
+      background: #2aa6a6;
+      border-radius: 4px;
+      transform: rotate(45deg);
+    }
+
+    /* Input Section */
     .input-area {
       display: flex;
-      margin-top: 20px;
+      margin-top: 10px;
     }
+
     .input-area input {
       flex: 1;
       padding: 12px 15px;
@@ -81,6 +153,7 @@
       background: #eefafa;
       font-size: 15px;
     }
+
     .input-area button {
       margin-left: 10px;
       padding: 12px 20px;
@@ -92,6 +165,7 @@
       font-weight: 600;
       transition: 0.25s;
     }
+
     .input-area button:hover {
       background: #ff654f;
       transform: translateY(-2px);
@@ -99,7 +173,8 @@
   </style>
 </head>
 <body>
-  <!-- Animated Paw Logo -->
+  <div class="pet-bg"></div>
+
   <div class="logo">
     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -114,13 +189,26 @@
 
   <div class="chat-container">
     <h1>🐾 PawlPal Assistant</h1>
-    <div class="message-box">Hello! I'm PawlBot. How can I help your pet today? 🐶🐱</div>
+
+    <div class="chat-box" id="chat">
+      <div class="msg bot">Hello! I'm PawlBot. How can I help your pet today? 🐶🐱</div>
+    </div>
 
     <div class="input-area">
-      <input type="text" placeholder="Ask me anything about pet sitting, prices, vets…" />
-      <button>Send</button>
+      <input id="userInput" type="text" placeholder="Ask me anything about pet sitting, prices, vets…" />
+      <button onclick="sendMsg()">Send</button>
     </div>
   </div>
 
-</body>
-</html>
+  <script>
+    const chat = document.getElementById('chat');
+    function addMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + type;
+      div.textContent = text;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function sendMsg() {
+      let input = document.getElementById('user
