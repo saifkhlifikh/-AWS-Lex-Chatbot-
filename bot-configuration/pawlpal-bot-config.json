@@ -1,1 +1,287 @@
-Complete AWS Lex bot configuration JSON with all intents, slots, slot types, utterances for 3 languages, fulfillment hooks, confirmation prompts, slot elicitation prompts
+Co   "intentName": "FindPetSitter",
+      "description": "Search for available pet sitters",
+      "sampleUtterances": "See sub-issues for complete list",
+      "slots": [
+        {
+          "slotName": "PetType",
+          "slotType": "AMAZON.Animal",
+          "valueElicitationPrompt": "What type of pet do you need sitting for?"
+        },
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City",
+          "valueElicitationPrompt": "Where do you need the sitter?"
+        },
+        {
+          "slotName": "DateRange",
+          "slotType": "AMAZON.DateInterval",
+          "valueElicitationPrompt": "What dates do you require?"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment",
+      "confirmationPrompt": "Let me search for available sitters in {Location} for your {PetType}."
+    },
+    {
+      "intentName": "BookPetSitter",
+      "description": "Book a specific pet sitter",
+      "slots": [
+        {
+          "slotName": "PetType",
+          "slotType": "AMAZON.Animal"
+        },
+        {
+          "slotName": "SitterName",
+          "slotType": "AMAZON.Person"
+        },
+        {
+          "slotName": "DateRange",
+          "slotType": "AMAZON.DateInterval"
+        },
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment",
+      "confirmationPrompt": "Confirm booking {SitterName} for your {PetType} on {DateRange} in {Location}?"
+    },
+    {
+      "intentName": "CheckBookingStatus",
+      "description": "Check status of existing bookings",
+      "slots": [
+        {
+          "slotName": "BookingID",
+          "slotType": "AMAZON.AlphaNumeric"
+        },
+        {
+          "slotName": "UserEmail",
+          "slotType": "AMAZON.EmailAddress"
+        },
+        {
+          "slotName": "PetName",
+          "slotType": "AMAZON.FirstName"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "GetSitterInfo",
+      "description": "Get detailed information about a sitter",
+      "slots": [
+        {
+          "slotName": "SitterName",
+          "slotType": "AMAZON.Person"
+        },
+        {
+          "slotName": "SitterID",
+          "slotType": "AMAZON.AlphaNumeric"
+        },
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "PetHealthVaccines",
+      "description": "Manage pet health and vaccine records",
+      "slots": [
+        {
+          "slotName": "PetName",
+          "slotType": "AMAZON.FirstName"
+        },
+        {
+          "slotName": "VaccineType",
+          "slotType": "VaccineTypeCustom"
+        },
+        {
+          "slotName": "DateRange",
+          "slotType": "AMAZON.Date"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "VeterinaryPartners",
+      "description": "Find partner veterinarians",
+      "slots": [
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City"
+        },
+        {
+          "slotName": "VetSpecialty",
+          "slotType": "VetSpecialtyCustom"
+        },
+        {
+          "slotName": "Emergency",
+          "slotType": "AMAZON.Boolean"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "PriceEstimation",
+      "description": "Calculate price estimates for services",
+      "slots": [
+        {
+          "slotName": "PetType",
+          "slotType": "AMAZON.Animal"
+        },
+        {
+          "slotName": "ServiceType",
+          "slotType": "ServiceTypeCustom"
+        },
+        {
+          "slotName": "Duration",
+          "slotType": "AMAZON.Number"
+        },
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "PetProfileSetup",
+      "description": "Create or update pet profiles",
+      "slots": [
+        {
+          "slotName": "PetName",
+          "slotType": "AMAZON.FirstName"
+        },
+        {
+          "slotName": "PetType",
+          "slotType": "AMAZON.Animal"
+        },
+        {
+          "slotName": "Age",
+          "slotType": "AMAZON.Number"
+        },
+        {
+          "slotName": "Breed",
+          "slotType": "AMAZON.AlphaNumeric"
+        },
+        {
+          "slotName": "MedicalConditions",
+          "slotType": "AMAZON.AlphaNumeric"
+        },
+        {
+          "slotName": "SpecialNeeds",
+          "slotType": "AMAZON.AlphaNumeric"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalFulfillment"
+    },
+    {
+      "intentName": "EmergencyHelp",
+      "description": "Handle pet emergencies with priority",
+      "priority": "HIGH",
+      "slots": [
+        {
+          "slotName": "EmergencyType",
+          "slotType": "EmergencyTypeCustom"
+        },
+        {
+          "slotName": "Location",
+          "slotType": "AMAZON.City"
+        },
+        {
+          "slotName": "PetType",
+          "slotType": "AMAZON.Animal"
+        }
+      ],
+      "fulfillmentLambda": "PawlPalEmergency"
+    },
+    {
+      "intentName": "AppSupport",
+      "description": "General app support and FAQs",
+      "slots": [
+        {
+          "slotName": "IssueType",
+          "slotType": "IssueTypeCustom"
+        },
+        {
+          "slotName": "FeatureName",
+          "slotType": "AMAZON.AlphaNumeric"
+        }
+      ],
+      "fulfillmentLambda": null
+    },
+    {
+      "intentName": "FallbackIntent",
+      "description": "Multilingual fallback for unrecognized input",
+      "parentIntentSignature": "AMAZON.FallbackIntent",
+      "slots": [
+        {
+          "slotName": "Language",
+          "slotType": "AMAZON.Language"
+        },
+        {
+          "slotName": "LastIntent",
+          "slotType": "AMAZON.AlphaNumeric"
+        }
+      ]
+    }
+  ],
+  "customSlotTypes": [
+    {
+      "slotTypeName": "VaccineTypeCustom",
+      "slotTypeValues": [
+        "rabies",
+        "distemper",
+        "parvovirus",
+        "bordetella",
+        "lyme",
+        "leptospirosis",
+        "feline leukemia",
+        "feline immunodeficiency"
+      ]
+    },
+    {
+      "slotTypeName": "VetSpecialtyCustom",
+      "slotTypeValues": [
+        "general",
+        "emergency",
+        "exotic",
+        "avian",
+        "dental",
+        "surgery",
+        "oncology"
+      ]
+    },
+    {
+      "slotTypeName": "ServiceTypeCustom",
+      "slotTypeValues": [
+        "sitting",
+        "walking",
+        "boarding",
+        "daycare",
+        "grooming"
+      ]
+    },
+    {
+      "slotTypeName": "EmergencyTypeCustom",
+      "slotTypeValues": [
+        "injury",
+        "poisoning",
+        "illness",
+        "accident",
+        "breathing difficulty",
+        "seizure"
+      ]
+    },
+    {
+      "slotTypeName": "IssueTypeCustom",
+      "slotTypeValues": [
+        "technical",
+        "payment",
+        "booking",
+        "account",
+        "general"
+      ]
+    }
+  ]
+}
